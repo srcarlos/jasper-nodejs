@@ -6,9 +6,9 @@
 */
 
 module.exports = {
+
 	connection: 'PostgresqlServer',
- // Define an adapter to use
-  adapter: 'postgresql',
+
    attributes: {
   	name:{
         type:"string", 
@@ -21,6 +21,10 @@ module.exports = {
         required:true,
         unique: false
       },
+      files:{
+      collection: "file",
+      via: "fk_document"
+    },
 
       
   }

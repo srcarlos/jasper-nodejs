@@ -8,7 +8,18 @@
 module.exports = {
 	
 
+  find : function (req,res) {
 
+    File.find().populateAll().exec(function(err,r){
+        // DB error
+        if (err) {
+          return res.send(error, 500);
+        }
+       console.log(r[0].toJSON())
+        return res.json(r);
+    });
+    
+  },
   /**
    * `FileController.index()`
    */
@@ -23,9 +34,45 @@ module.exports = {
    * `FileController.create()`
    */
   create: function (req, res) {
-    return res.json({
-      todo: 'create() is not implemented yet!'
-    });
+      var params = req.params.all();
+
+    console.log(params);
+
+    var data = 
+      { name: params.name,
+        fk_document: params.fk_document,
+        parentId: params.parentId,
+      };
+
+  File.findOne(data).exec(function(error, file) {
+
+
+  console.log(file);
+
+  // DB error
+  if (error) {
+    return res.send(error, 500);
+  }
+
+  // file exists
+  if (file && file.length) {
+
+    // Return validation error here
+    return res.send({error: 'file with that params already exists'}, 403.9);
+  }
+
+  // File doesnt exist with that email
+  File.create(data).exec(function createCB(err,created) {
+    // DB error
+    if (err) {
+      return res.send(err, 500);
+    }
+    // New user creation was successful
+    return res.json(created);
+
+  });
+
+});
   },
 
 

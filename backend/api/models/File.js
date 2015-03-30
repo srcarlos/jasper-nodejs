@@ -8,12 +8,39 @@
 module.exports = {
 
 connection: 'PostgresqlServer',
- // Define an adapter to use
-  adapter: 'postgresql',
 
   attributes: {
 
-    name : { type: 'string' }
+  	id: {
+    	type: 'integer',
+    	primaryKey: true,
+    	autoIncrement: true
+  	},
+
+    name : {
+     type: 'string' 
+ 	},
+ 	path : {
+     type: 'string' 
+ 	},
+    
+    fk_document:{
+    type: 'integer',
+	foreignKey: true,
+    model: 'document'
+    },
+
+// TREE parentID 
+    parentId:{
+    type: 'integer',
+	foreignKey: true,
+    model: 'file'
+    },
+    parent:{
+      collection: "file",
+      via: "parentId"
+    }
+
   }
 };
 

@@ -10,14 +10,15 @@ module.exports = {
 
 	find : function (req,res) {
 
-		Document.find(function(err, documents) {
-      console.log(JSON.stringify(documents));
-      return res.json(documents);
-    
-       });
-
-
-
+		Document.find().
+		populate('files').exec(function(err,r){
+			  // DB error
+			  if (err) {
+			    return res.send(error, 500);
+			  }
+			 console.log(r[0].toJSON())
+			  return res.json(r);
+		});
 		
 	},
 
