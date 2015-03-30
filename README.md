@@ -1,9 +1,20 @@
 # Jasper-NODEJS
-Package to generate reports with JasperReports library through JasperStarter command-line tool.
+
+Package to generate reports with JasperReports library through  RESTful API JSON.
+
+
 
 # JasperReports for NodeJs 
 
 Package to generate reports with [JasperReports](http://community.jaspersoft.com/project/jasperreports-library) library through [JasperStarter](http://jasperstarter.sourceforge.net/) command-line tool.
+##Requirements
+
+Yo need install on your server
+
+Java version "1.6.0" or latest
+Java(TM) SE Runtime Environment
+Java HotSpot(TM) 64-Bit Server VM
+
 
 ##Introduction
 
