@@ -13,6 +13,13 @@ Java version "1.6.0" or latest.
 Java(TM) SE Runtime Environment.
 Java HotSpot(TM) 64-Bit Server VM.
 
+## next activitys
+
+-Admin jrxml and Jasper Documents
+	Upload
+	Compile
+	Process
+
 
 ##Introduction
 
